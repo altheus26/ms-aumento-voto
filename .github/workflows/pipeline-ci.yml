@@ -5,10 +5,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Run a multi-line-script
-      run: |
-        echo "hola mundo"
-    - name: Hola 2
-      run: |
-        echo "Chao mundo"
+      - name: Clonar repo
+        uses: actions/checkout@v4
+      
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+      
+      
+      - name: Compilar codigo
+        run: |
+          mvn package
+        
+    
